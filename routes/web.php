@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BotManController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardProductsController;
@@ -23,41 +25,20 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/about', function () {
-    return view('about', [
-        "title" => "About"
-    ]);
-});
-
 Route::get('/products', function () {
     return view('products', [
         "title" => "Products"
     ]);
 });
 
-// Product Category
+Route::get('/chatbot', function () {
+    return view('chatbot', [
+        "title" => "Chatbot"
+    ]);
+});
+
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{product:slug}', [ProductController::class, 'show']);
-
-
-Route::get('/sewing-club', function () {
-    return view('sewing-club', [
-        "title" => "Sewing Club"
-    ]);
-});
-
-Route::get('/service-center', function () {
-    return view('service-center', [
-        "title" => "Service Center"
-    ]);
-});
-
-Route::get('/our-dealer', function () {
-    return view('our-dealer', [
-        "title" => "Our Dealer",
-        "active" => "our dealer"
-    ]);
-});
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -73,3 +54,12 @@ Route::get('/dashboard', function () {
 
 Route::get('/dashboard/products/checkSlug', [DashboardProductsController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/products', DashboardProductsController::class)->middleware('auth');
+
+Route::match(['get', 'post'], 'botman', [BotManController::class, "handle"]);
+
+Route::post('/chat-completion', [ChatController::class, 'chatCompletion'])->name('chat.completion');
+
+// Route::get('/chat', [ChatController::class, 'index']);
+// // Route::post('/chat', [ChatController::class, 'sendMessage']);
+
+// Route::post('/chat', 'OpenAIController@chatCompletion')->name('chat.completion');

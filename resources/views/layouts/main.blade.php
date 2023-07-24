@@ -1,8 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
 		<title>{{ $title }} | Singer Indonesia</title>
 
         <link rel="manifest" href="manifest.json">
@@ -38,6 +40,12 @@
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('products*') ? 'active' : '' }}" href="/products">Products</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('chatbot*') ? 'active' : '' }}" href="/chatbot">Chatbot</a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a class="nav-link {{ Request::is('cekout') ? 'active' : '' }}" aria-current="page" href="/cekout"><i class="fa-solid fa-cart-shopping me-2"></i>Checkout</a>
+                        </li> --}}
                         {{-- @auth
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -59,13 +67,6 @@
                             <a class="nav-link {{ Request::is('logout') ? 'active' : '' }}" href="/login">Login</a>
                         </li>
                         @endauth --}}
-                    </ul>
-                </div>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav text-center">
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::is('cekout') ? 'active' : '' }}" aria-current="page" href="/cekout"><i class="fa-solid fa-cart-shopping me-2"></i>Checkout</a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -111,11 +112,19 @@
 		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-        <script src="{{ asset('js/script.js') }}"></script>
+        {{-- <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script> --}}
+        {{-- <script src="{{ asset('js/chat.js') }}"></script> --}}
         
         <!-- Global site tag (gtag.js) - Google Analytics -->
 	    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176396517-1"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRmHyVO4k9KooN1_FGl8sZgNktmT9UlSY&callback=initMap" sasync defer></script>
 
+        {{-- Botman --}}
+        {{-- <script>
+	        var botmanWidget = {
+	            aboutText: 'singer',
+	            introMessage: "Halo! ✋ saya Singer Jakarta bot </br> ketik <b>start</b> atau <b>mulai</b> untuk memulai percakapan"
+	        };
+        </script> --}}
 	</body>
 </html>

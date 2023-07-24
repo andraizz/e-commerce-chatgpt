@@ -10,7 +10,7 @@
                     <h3>Produk Terbaru</h3>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-md-6">
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-6">
                         <form action="/products">
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="Search..." name="search" value="{{ request('search') }}">
@@ -22,16 +22,11 @@
                 <div class="products">
                     <div class="row">
                         <div class="nav nav-pills d-flex justify-content-center mb-2">
-                            <button class="nav-link me-4 my-2 p-2 active"
-                                data-bs-toggle="pill" data-bs-target="#tab-pane-1" type="button">
+                            <button class="nav-link my-2 p-2 active">
                                 <h6 class="m-0">Semua</h6>
                             </button>
-                            {{-- <button class="nav-link my-2 p-2"
-                                data-bs-toggle="pill" data-bs-target="#tab-pane-2" type="button">
-                                <h6 class="m-0">Stand</h6>
-                            </button> --}}
                         </div>
-                        {{-- 1. Button 1 --}}
+                        {{-- 1. --}}
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="tab-pane-1">
                                 <div class="row">
@@ -46,7 +41,8 @@
                                                     <img src="{{ $product->gambar }}" class="card-img-top" title="{{ $product->nama_produk }}" alt="{{ $product->nama_produk }}">
                                                 </a>
                                                 <ul>
-                                                    <li><a href="https://api.whatsapp.com/send?phone=6281383521987&text=Halo,%20Saya%20tertarik%20dengan%20produk%20:%20{{ $product->nama_produk }}"><i class="fa-brands fa-whatsapp me-2"></i>WhatsApp</a></li>
+                                                    {{-- <li><a href="https://api.whatsapp.com/send?phone=6281383521987&text=Halo,%20Saya%20tertarik%20dengan%20produk%20:%20{{ $product->nama_produk }}" target="_blank"><i class="fa-brands fa-whatsapp me-2"></i>WhatsApp</a></li> --}}
+                                                    <li><a href="https://api.whatsapp.com/send?phone=6281383521987&text={{ urlencode('Halo, Saya tertarik dengan produk: ' . $product->nama_produk) }}"><i class="fa-brands fa-whatsapp me-2"></i>WhatsApp</a></li>
                                                 </ul>
                                             </div>
                                             <div class="card-body part-2">
