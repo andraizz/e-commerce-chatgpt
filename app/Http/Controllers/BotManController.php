@@ -26,8 +26,6 @@ class BotManController extends Controller
                 $botman->reply("Kami akan membantu pelatihan penggunaan dan perawatan mesin secara GRATIS dan untuk layanan service kami akan datang ke rumah khusus wilayah DKI Jakarta dan sekitarnya");
             }elseif($message == '5' OR $message == 'cara order'){
                 $botman->reply("Untuk saat ini kami menerima order via WhatsApp. Caranya klik icon WhatsApp pada produk yang ingin dipesan, lalu chat admin untuk melanjutkan pemesanan");
-            }elseif($message == '6' OR $message == 'info lengkap'){
-                $botman->reply("Info lengkap dapat langsung hubungi admin via WhatsApp 081383521987");
             }else{
                 $botman->reply("Maaf, saya tidak mengerti maksud Anda :( </br> coba ketik <b>start</b> atau <b>mulai</b>");
             }
