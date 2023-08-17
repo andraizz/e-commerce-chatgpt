@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BotManController;
+use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardProductsController;
@@ -57,9 +58,9 @@ Route::resource('/dashboard/products', DashboardProductsController::class)->midd
 
 Route::match(['get', 'post'], 'botman', [BotManController::class, "handle"]);
 
-Route::post('/chat-completion', [ChatController::class, 'chatCompletion'])->name('chat.completion');
+// Route::post('/chat-completion', [ChatController::class, 'chatCompletion'])->name('chat.completion');
+
+Route::post('/chat-completion', [ChatbotController::class, 'chatCompletion'])->name('chat.completion');
 
 // Route::get('/chat', [ChatController::class, 'index']);
 // // Route::post('/chat', [ChatController::class, 'sendMessage']);
-
-// Route::post('/chat', 'OpenAIController@chatCompletion')->name('chat.completion');
