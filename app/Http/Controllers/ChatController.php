@@ -24,9 +24,6 @@ class ChatController extends Controller
             ])->with('title', 'Response');
         }
 
-        // Memulai waktu respon
-        $start = microtime(true);
-
         // Jika pertanyaan pengguna tidak sesuai dengan pola, gunakan ChatGPT untuk menghasilkan respons
         // Data payload untuk permintaan API
         $data = [
