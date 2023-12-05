@@ -58,7 +58,7 @@ class ChatbotController extends Controller
 
         //Ambil hasil dari response
         $responseData = $response->json();
-
+        dd($responseData);
         //Ambil hanya konten dari respon
         $content = $responseData['choices'][0]['message']['content'];
 
